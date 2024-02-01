@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-tamatem-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-tamatem-app
+  template:
+    metadata:
+      labels:
+        app: hello-tamatem-app
+    spec:
+      containers:
+      - name: web
+        image: hello-tamatem-app:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "0.2"
+          limits:
+            memory: "200Mi"
+            cpu: "0.2"
+        ports:
+        - containerPort: 5000
